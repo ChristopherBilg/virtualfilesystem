@@ -1,0 +1,13 @@
+#+STARTUP: everything
+* TODO [0/11] [0%]
+ 1. [ ] File system creation (*)
+ 2. [ ] File system deletion (*)
+ 3. [ ] Create a file (*)
+ 4. [ ] Delete a file (*)
+ 5. [ ] Read data from a file (*)
+ 6. [ ] Write data to a file (*)
+ 7. [ ] Change directories within the virtual disk (?)
+ 8. [ ] Lookup metadata about a particular file (?)
+ 9. [ ] List all of the contents of the virtual disk (?)
+ 10. [ ] Modular tests for all of the above functions
+ 11. [ ] Input parser / shell prompt to allow user navigation through virtual disk
