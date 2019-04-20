@@ -1,5 +1,5 @@
 #+STARTUP: everything
-* TODO [0/11] [0%]
+* TODO [0/12] [0%]
  1. [ ] File system creation (*)
  2. [ ] File system deletion (*)
  3. [ ] Create a file (*)
@@ -11,3 +11,4 @@
  9. [ ] List all of the contents of the virtual disk (?)
  10. [ ] Modular tests for all of the above functions
  11. [ ] Input parser / shell prompt to allow user navigation through virtual disk
+ 12. [ ] Make sure that project contains all of the requirements before submitting
