@@ -60,6 +60,14 @@ void initialize_reserved_blocks() {
   printf("%s> Reserved blocks have been initialized successfully", VIRTUAL_DISK_FILE);
 }
 
+int get_file_index(char *filename) {
+  char temp_fn[13];
+  int temp_index = 0;
+  
+  // if no file was found, then return -1
+  return -1;
+}
+
 char *get_next_open_FAT_location() {
   char temporary[1];
 
@@ -93,7 +101,8 @@ char *get_next_open_RESERVED_location() {
     fseek(virtual_disk, (temp + index), SEEK_SET);
     fread(temporary, 13, 1, virtual_disk); // read 13 bytes from virtual disk
     if (strcmp(temporary, "") == 0) { // meaning temporary = "" (blank string)
-      sprintf(temp_ptr, "%u", ((index / ENTRY_SIZE * 4) + (RESERVED_SP * DISK_BLOCK_SIZE / 16) + (1)));
+      int location = ((index / ENTRY_SIZE * 4) + (RESERVED_SP * DISK_BLOCK_SIZE / 16) + (1));
+      sprintf(temp_ptr, "%u", location);
       return temp_ptr;
     }
   }
@@ -103,5 +112,23 @@ char *get_next_open_RESERVED_location() {
 }
 
 char *get_next_open_DATA_location() {
-  
+  char temporary[1]; // 1 bytes long for the valid member of the "struct ENTRY"
+
+  // reset the file pointer to the beginning fo the DATA storage area
+  int temp = DATA_SP * DISK_BLOCK_SIZE;
+  fseek(virtual_disk, temp, SEEK_SET);
+
+  // loop through all blocks of data entries until an open one is found
+  for (int index=0; index < (DISK_TOTAL_BLOCKS - 5) * DISK_BLOCK_SIZE; index+=DISK_BLOCK_SIZE) {
+    fseek(virtual_disk, temp + index, SEEK_SET);
+    fread(temporary, 1, 1, virtual_disk); // read 1 byte from the disk file
+    if (strcmp(temporary, "") == 0) { // meaning the block has not been used yet
+      int location = ((index / DISK_BLOCK_SIZE * ENTRY_SIZE) + (DATA_SP * DISK_BLOCK_SIZE / 16) + (1));
+      sprintf(temp_ptr, "%u", location);
+      return temp_ptr;
+    }
+  }
+
+  // if no open data blocks then return -1
+  return "-1";
 }

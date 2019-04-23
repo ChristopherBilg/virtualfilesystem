@@ -36,6 +36,7 @@ struct NULL_BLOCK_DIR_DATA {
 FILE initialize_virtual_disk(char *virtual_disk_filename);
 void initialize_reserved_blocks();
 
+int get_file_index(char *filename);
 char *get_next_open_FAT_location();
 char *get_next_open_RESERVED_location();
 char *get_next_open_DATA_location();
