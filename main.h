@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 
+// REQUIREMENT: >= 8 digit filename
+// REQUIREMENT: 3 digit file extension
+
 // 32-byte entries
 struct ENTRY {
   char filename[23];
