@@ -18,11 +18,11 @@ struct ENTRY {
 
 // file allocation table (32-byte entries)
 struct FAT {
+  char valid[1]; // Validity byte shown in class
+  char filename[13];
   char reserved[6];
   char data[6];
   char next_block[6];
-  char valid[1]; // Validity byte shown in class
-  char filename[13];
 };
 
 struct NULL_BLOCK_ENTRY_DATA {
@@ -35,6 +35,11 @@ struct NULL_BLOCK_DIR_DATA {
 
 FILE initialize_virtual_disk(char *virtual_disk_filename);
 void initialize_reserved_blocks();
+
+int create_file(char *filename, char *ext);
+int delete_file(char *filename);
+int read_from_file(char *filename);
+int write_to_file(char *filename, char *new_data);
 
 int get_file_index(char *filename);
 char *get_next_open_FAT_location();
