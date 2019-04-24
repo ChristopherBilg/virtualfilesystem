@@ -1,11 +1,11 @@
 #+STARTUP: showeverything
-* TODO [8/9] [88%]
+* TODO [9/9] [100%]
  1. [X] File system creation (*)
  2. [X] File system deletion (*)
  3. [X] Create a file (*)
  4. [X] Delete a file (*)
  5. [X] Read data from a file (*)
  6. [X] Write data to a file (*)
- 7. [ ] Modular tests for all of the above functions
+ 7. [X] Modular tests for all of the above functions
  8. [X] Input parser / shell prompt to allow user navigation through virtual disk
  9. [X] Make sure that project contains all of the requirements before submitting
