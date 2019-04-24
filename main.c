@@ -309,11 +309,54 @@ int main(int argc, char **argv) {
     printf("5. Exit the virtual disk terminal\n");
     scanf("%2s", input);
 
-    /***********************/
-    /* switch (input[0]) { */
-    /* case '1':           */
-    /*                     */
-    /* }                   */
-    /***********************/
+    int input2 = atoi(&input[0]);
+    char input3[DISK_BLOCK_SIZE];
+    char file[13] = {"\0"};
+    char extension[3] = {"\0"};
+    if (input2 == 1) {
+      printf("Please enter the file name: ");
+      scanf("%13s", file);
+      printf("Please enter the extension: ");
+      scanf("%3s", extension);
+
+      if (create_file(file, extension) == -1)
+        printf("File could not be created as described.\n");
+      else
+        printf("File created successfully.\n");
+    }
+    else if (input2 == 2) {
+      printf("Please enter the file name: ");
+      scanf("%13s", file);
+
+      if (delete_file(file) == -1)
+        printf("File could not be deleted as described.\n");
+      else
+        printf("File deleted successfully.\n");
+    }
+    else if (input2 == 3) {
+      printf("Please enter the file name: ");
+      scanf("%13s", file);
+
+      if (read_from_file(file) == -1)
+        printf("File could not be read as described.\n");
+    }
+    else if (input2 == 4) {
+      printf("Please enter the file name: ");
+      scanf("%13s", file);
+      printf("Please enter the new data to be written to the file: ");
+      scanf("%512s", input3);
+      
+      if (write_to_file(file, input3) == -1)
+        printf("File could not be read as described.\n");
+      else
+        printf("Data written to file successfuly.\n");
+    }
+    else if (input2 == 5) {
+      printf("Virtual disk closing properly.\n");
+      close_virtual_disk_properly();
+    }
+    else {
+      printf("Please enter a valid input.\n");
+    }
   }
 }
