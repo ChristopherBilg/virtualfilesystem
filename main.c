@@ -347,7 +347,7 @@ int main(int argc, char **argv) {
       scanf("%512s", input3);
       
       if (write_to_file(file, input3) == -1)
-        printf("File could not be read as described.\n");
+        printf("File could not be written to as described.\n");
       else
         printf("Data written to file successfuly.\n");
     }
@@ -358,5 +358,9 @@ int main(int argc, char **argv) {
     else {
       printf("Please enter a valid input.\n");
     }
+
+    printf("%s|\n", file);
   }
+
+  return EXIT_SUCCESS;
 }
