@@ -359,7 +359,8 @@ int main(int argc, char **argv) {
       printf("Please enter a valid input.\n");
     }
 
-    printf("%s|\n", file);
+    // Used for testing purposes
+    // printf("%s|\n", file);
   }
 
   return EXIT_SUCCESS;

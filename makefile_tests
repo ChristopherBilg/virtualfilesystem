@@ -1,7 +1,11 @@
 # The final executable test file to be run
-output_tests: main.o
-	gcc -o output main.o -g
+output_tests: main.o tests.o
+	gcc -o output_tests main.o tests.o -g
 
 # The only c file needed to implement/test the virtual disk
 main.o: main.c
 	gcc -o main.o main.c -c -g
+
+# The file to run the modular tests
+tests.o: tests.c
+	gcc -o tests.o tests.c -c -g
