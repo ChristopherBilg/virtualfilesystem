@@ -40,6 +40,7 @@ int create_file(char *filename, char *ext);
 int delete_file(char *filename);
 int read_from_file(char *filename);
 int write_to_file(char *filename, char *new_data);
+void close_virtual_disk_properly();
 
 int get_file_index(char *filename);
 char *get_next_open_FAT_location();

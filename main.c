@@ -161,11 +161,53 @@ int delete_file(char *filename) {
 }
 
 int read_from_file(char *filename) {
+  // check that file exists
+  int file_location = get_file_index(filename);
+  if (file_location == -1)
+    return -1;
+
+  char data[DISK_BLOCK_SIZE];
+  char temp_ptr[6];
+  int temp_ptr2;
+
+  fseek(virtual_disk, (file_location - 1) * 16, SEEK_SET);
+	fseek(virtual_disk, 19, SEEK_CUR); // offset of 19 until internal ptr.
+	fread(temp_ptr , 1, 6, virtual_disk); // internal pointer length of 6
+	temp_ptr2 = atoi(temp_ptr);
+	fseek(virtual_disk, (temp_ptr2 - 1) * 16, SEEK_SET);
+	fread(data, 1, DISK_BLOCK_SIZE, virtual_disk);
+
+  // write all data to console
+	for (int i = 0; i < DISK_BLOCK_SIZE; i++)
+		printf("%c", data[i]);
+	printf("\n");
+  
   return 1;
 }
 
 int write_to_file(char *filename, char *new_data) {
+  // check that the file exists
+  int file_location = get_file_index(filename);
+  if (file_location == -1)
+    return -1;
+
+  char temp_ptr[6];
+  int temp_ptr2;
+
+  // move to correct data location and write new data over old data
+  fseek(virtual_disk, (file_location - 1) * 16, SEEK_SET);
+	fseek(virtual_disk, 19, SEEK_CUR);
+	fread(temp_ptr , 1, 6, virtual_disk);
+	temp_ptr2 = atoi(temp_ptr);
+	fseek(virtual_disk, (temp_ptr2 - 1) * 16, SEEK_SET);
+	fwrite(new_data, 1, DISK_BLOCK_SIZE, virtual_disk);
+  
   return 1;
+}
+
+void close_virtual_disk_properly() {
+  fclose(virtual_disk);
+  exit(EXIT_SUCCESS);
 }
 
 int get_file_index(char *filename) {
