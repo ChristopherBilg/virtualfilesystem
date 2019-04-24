@@ -294,3 +294,26 @@ char *get_next_open_DATA_location() {
   // if no open data blocks then return -1
   return "-1";
 }
+
+// main loop that will run the "interpreter"
+int main(int argc, char **argv) {
+  initialize_virtual_disk(VIRTUAL_DISK_FILE);
+
+  char input[2];
+  while (1) {
+    printf("Type one of the following integers:\n");
+    printf("1. Create a file\n");
+    printf("2. Delete a file\n");
+    printf("3. Read from a file\n");
+    printf("4. Write to a file\n");
+    printf("5. Exit the virtual disk terminal\n");
+    scanf("%2s", input);
+
+    /***********************/
+    /* switch (input[0]) { */
+    /* case '1':           */
+    /*                     */
+    /* }                   */
+    /***********************/
+  }
+}

@@ -47,4 +47,6 @@ char *get_next_open_FAT_location();
 char *get_next_open_RESERVED_location();
 char *get_next_open_DATA_location();
 
+int main(int argc, char **argv);
+
 #endif
