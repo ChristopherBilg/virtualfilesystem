@@ -304,9 +304,8 @@ int main(int argc, char **argv) {
     printf("Type one of the following integers:\n");
     printf("1. Create a file\n");
     printf("2. Delete a file\n");
-    printf("3. Read from a file\n");
-    printf("4. Write to a file\n");
-    printf("5. Exit the virtual disk terminal\n");
+    printf("3. Open the file\n");
+    printf("4. Exit the virtual disk terminal\n");
     scanf("%2s", input);
 
     int input2 = atoi(&input[0]);
@@ -338,20 +337,22 @@ int main(int argc, char **argv) {
       scanf("%13s", file);
 
       if (read_from_file(file) == -1)
-        printf("File could not be read as described.\n");
+        printf("File could not be opened as described.\n");
     }
+    /**********************************************************************/
+    /* else if (input2 == 4) {                                            */
+    /*   printf("Please enter the file name: ");                          */
+    /*   scanf("%13s", file);                                             */
+    /*   printf("Please enter the new data to be written to the file: "); */
+    /*   scanf("%512s", input3);                                          */
+    /*                                                                    */
+    /*   if (write_to_file(file, input3) == -1)                           */
+    /*     printf("File could not be written to as described.\n");        */
+    /*   else                                                             */
+    /*     printf("Data written to file successfuly.\n");                 */
+    /* }                                                                  */
+    /**********************************************************************/
     else if (input2 == 4) {
-      printf("Please enter the file name: ");
-      scanf("%13s", file);
-      printf("Please enter the new data to be written to the file: ");
-      scanf("%512s", input3);
-      
-      if (write_to_file(file, input3) == -1)
-        printf("File could not be written to as described.\n");
-      else
-        printf("Data written to file successfuly.\n");
-    }
-    else if (input2 == 5) {
       printf("Virtual disk closing properly.\n");
       close_virtual_disk_properly();
     }
