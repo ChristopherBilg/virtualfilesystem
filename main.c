@@ -20,7 +20,7 @@
 FILE *virtual_disk;
 char temp1[3];
 char temp2[5];
-char temp_ptr[6];
+char temp_ptr[4];
 unsigned int cwd_level = 0;
 
 FILE initialize_virtual_disk(char *virtual_disk_filename) {
